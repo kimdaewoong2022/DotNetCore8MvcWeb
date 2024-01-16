@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DotNetCore8MvcWeb.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DotNetCore8MvcWeb.Data
 {
@@ -8,5 +9,7 @@ namespace DotNetCore8MvcWeb.Data
         {
 
         }
+
+        public DbSet<Category> Categories { get; set; }
     }
 }
