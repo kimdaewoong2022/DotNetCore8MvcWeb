@@ -26,11 +26,11 @@ namespace DotNetCore8MvcWeb.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
-            //커스텀 유효성 검사 
-            if (obj.Name == obj.DisplayOrder.ToString())
-            {
-                ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
-            }
+            ////커스텀 유효성 검사 
+            //if (obj.Name == obj.DisplayOrder.ToString())
+            //{
+            //    ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
+            //}
             //서버사이드 유효성 검사 
             if (ModelState.IsValid)
             {
