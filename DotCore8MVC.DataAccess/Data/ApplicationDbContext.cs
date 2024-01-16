@@ -1,7 +1,7 @@
-﻿using DotNetCore8MvcWeb.Models;
+﻿using DotCore8MVC.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DotNetCore8MvcWeb.Data
+namespace DotCore8MVC.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {

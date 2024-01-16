@@ -1,4 +1,4 @@
-using DotNetCore8MvcWeb.Models;
+using DotCore8MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

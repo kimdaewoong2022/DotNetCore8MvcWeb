@@ -1,5 +1,5 @@
-﻿using DotNetCore8MvcWeb.Data;
-using DotNetCore8MvcWeb.Models;
+﻿using DotCore8MVC.DataAccess.Data;
+using DotCore8MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetCore8MvcWeb.Controllers

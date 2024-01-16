@@ -1,4 +1,4 @@
-namespace DotNetCore8MvcWeb.Models
+namespace DotCore8MVC.Models
 {
     public class ErrorViewModel
     {

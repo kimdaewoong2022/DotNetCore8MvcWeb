@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace DotNetCore8MvcWeb.Migrations
+namespace DotCore8MVC.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddCategoryTableToDb : Migration

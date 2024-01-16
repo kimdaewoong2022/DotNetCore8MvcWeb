@@ -16,4 +16,10 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DotCore8MVC.DataAccess\DotCore8MVC.DataAccess.csproj" />
+    <ProjectReference Include="..\DotCore8MVC.Models\DotCore8MVC.Models.csproj" />
+    <ProjectReference Include="..\DotCore8MVC.Utility\DotCore8MVC.Utility.csproj" />
+  </ItemGroup>
+
 </Project>

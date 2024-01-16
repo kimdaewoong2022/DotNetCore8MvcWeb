@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace DotNetCore8MvcWeb.Migrations
+namespace DotCore8MVC.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class SeedCategoryTableToDb : Migration
