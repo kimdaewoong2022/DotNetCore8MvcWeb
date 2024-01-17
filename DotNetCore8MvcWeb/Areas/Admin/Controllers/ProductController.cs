@@ -2,6 +2,7 @@
 using DotCore8MVC.DataAccess.Repository.IRepository;
 using DotCore8MVC.Models.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DotNetCore8MvcWeb.Areas.Admin.Controllers
 {
@@ -16,11 +17,26 @@ namespace DotNetCore8MvcWeb.Areas.Admin.Controllers
         public IActionResult Index()
         {
             List<Product> objProductList = _unitOfWork.Product.GetAll().ToList();
+            IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category
+                .GetAll().Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            });
             return View(objProductList);
         }
 
         public IActionResult Create()
         {
+            IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category
+               .GetAll().Select(u => new SelectListItem
+               {
+                   Text = u.Name,
+                   Value = u.Id.ToString()
+               });
+
+            ViewBag.CategoryList = CategoryList;
+
             return View();
         }
         [HttpPost]
