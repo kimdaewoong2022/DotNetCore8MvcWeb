@@ -3,8 +3,9 @@ using DotCore8MVC.DataAccess.Repository.IRepository;
 using DotCore8MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DotNetCore8MvcWeb.Controllers
+namespace DotNetCore8MvcWeb.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         //private readonly ApplicationDbContext _db;
