@@ -1,4 +1,5 @@
 ﻿using DotCore8MVC.DataAccess.Data;
+using DotCore8MVC.DataAccess.Repository.IRepository;
 using DotCore8MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,15 +7,19 @@ namespace DotNetCore8MvcWeb.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public CategoryController(ApplicationDbContext db)
+        //private readonly ApplicationDbContext _db;
+        //public CategoryController(ApplicationDbContext db)
+        private readonly ICategoryRepository _categoryRepo;
+        public CategoryController(ICategoryRepository db)
         {
-            _db = db;
+            //_db = db;
+            _categoryRepo = db;
         }
 
         public IActionResult Index()
         {
-            List<Category> objCategoryList = _db.Categories.ToList();
+            //List<Category> objCategoryList = _db.Categories.ToList();
+            List<Category> objCategoryList = _categoryRepo.GetAll().ToList();
             return View(objCategoryList);
         }
 
@@ -34,8 +39,10 @@ namespace DotNetCore8MvcWeb.Controllers
             //서버사이드 유효성 검사 
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
-                _db.SaveChanges();
+                //_db.Categories.Add(obj);
+                //_db.SaveChanges();
+                _categoryRepo.Add(obj);
+                _categoryRepo.Save();
                 TempData["success"] = "Category 생성 성공";
                 return RedirectToAction("Index");
             }
@@ -48,7 +55,8 @@ namespace DotNetCore8MvcWeb.Controllers
             {
                 return NotFound();
             }
-            Category? categoryFromDb = _db.Categories.Find(id);
+            //Category? categoryFromDb = _db.Categories.Find(id);
+            Category? categoryFromDb = _categoryRepo.Get(u => u.Id == id);
             //Category? categoryFromDb1 = _db.Categories.FirstOrDefault(u=>u.Id==id);
             //Category? categoryFromDb2 = _db.Categories.Where(u=>u.Id==id).FirstOrDefault();
 
@@ -64,8 +72,10 @@ namespace DotNetCore8MvcWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(obj);
-                _db.SaveChanges();
+                //_db.Categories.Update(obj);
+                //_db.SaveChanges();
+                _categoryRepo.Update(obj);
+                _categoryRepo.Save();
                 TempData["success"] = "Category 수정 성공";
                 return RedirectToAction("Index");
             }
@@ -79,7 +89,8 @@ namespace DotNetCore8MvcWeb.Controllers
             {
                 return NotFound();
             }
-            Category? categoryFromDb = _db.Categories.Find(id);
+            //Category? categoryFromDb = _db.Categories.Find(id);
+            Category? categoryFromDb = _categoryRepo.Get(u => u.Id == id);
             //Category? categoryFromDb1 = _db.Categories.FirstOrDefault(u=>u.Id==id);
             //Category? categoryFromDb2 = _db.Categories.Where(u=>u.Id==id).FirstOrDefault();
 
@@ -92,13 +103,16 @@ namespace DotNetCore8MvcWeb.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            Category? obj = _db.Categories.Find(id);
+            //Category? obj = _db.Categories.Find(id);
+            Category? obj = _categoryRepo.Get(u => u.Id == id);
             if (obj == null)
             {
                 return NotFound();
             }
-            _db.Categories.Remove(obj);
-            _db.SaveChanges();
+            //_db.Categories.Remove(obj);
+            //_db.SaveChanges();
+            _categoryRepo.Remove(obj);
+            _categoryRepo.Save();
             TempData["success"] = "Category deleted successfully";
             return RedirectToAction("Index");
         }

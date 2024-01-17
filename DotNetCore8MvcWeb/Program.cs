@@ -1,4 +1,6 @@
 using DotCore8MVC.DataAccess.Data;
+using DotCore8MVC.DataAccess.Repository.IRepository;
+using DotCore8MVC.DataAccess.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //PostgreSQL 사용함을 명시함
 //builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//CategoryRepository 종속성 주입
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 var app = builder.Build();
 
