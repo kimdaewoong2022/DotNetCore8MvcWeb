@@ -15,8 +15,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//CategoryRepository 辆加己 林涝
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+//CategoryRepository 狼粮己 林涝(Dependency Injection)
+//builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 
