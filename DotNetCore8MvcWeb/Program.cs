@@ -2,20 +2,23 @@ using DotCore8MVC.DataAccess.Data;
 using DotCore8MVC.DataAccess.Repository.IRepository;
 using DotCore8MVC.DataAccess.Repository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-//Sql Server »ç¿ëÇÔÀ» ¸í½ÃÇÔ
+//Sql Server ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//PostgreSQL »ç¿ëÇÔÀ» ¸í½ÃÇÔ
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
+
+//PostgreSQL ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//CategoryRepository ÀÇÁ¸¼º ÁÖÀÔ(Dependency Injection)
+//CategoryRepository ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(Dependency Injection)
 //builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
