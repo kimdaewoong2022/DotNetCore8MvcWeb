@@ -1,11 +1,14 @@
 ﻿using DotCore8MVC.DataAccess.Data;
 using DotCore8MVC.DataAccess.Repository.IRepository;
 using DotCore8MVC.Models;
+using DotCore8MVC.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetCore8MvcWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class CategoryController : Controller
     {
         //private readonly ApplicationDbContext _db;

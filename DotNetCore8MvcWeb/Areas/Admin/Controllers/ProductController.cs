@@ -1,6 +1,8 @@
 ﻿using DotCore8MVC.DataAccess.Data;
 using DotCore8MVC.DataAccess.Repository.IRepository;
 using DotCore8MVC.Models.Models;
+using DotCore8MVC.Utility;
+using Microsoft.AspNetCore.Authorization;
 using DotCore8MVC.Models.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DotNetCore8MvcWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
