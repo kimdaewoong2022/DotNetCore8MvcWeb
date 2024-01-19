@@ -36,7 +36,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();    // 로그인 인증 추가 
 app.UseAuthorization();
 
 app.MapControllerRoute(
