@@ -31,4 +31,8 @@
 	  <Folder Include="wwwroot\images\product\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\js\company.js" />
+  </ItemGroup>
+
 </Project>
