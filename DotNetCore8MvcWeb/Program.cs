@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-//Sql Server ������� ������
+//Sql Server 의존성 주입
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -26,11 +26,11 @@ builder.Services.ConfigureApplicationCookie(options => {
 builder.Services.AddRazorPages();
 
 
-//PostgreSQL ������� ������
+//PostgreSQL 의존성 주입(Dependency Injection)
 //builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//CategoryRepository ������ ����(Dependency Injection)
+//CategoryRepository 의존성 주입(Dependency Injection)
 //builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
